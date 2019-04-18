@@ -38,6 +38,14 @@ article {
   background-color: #f1f1f1;
   height: 300px; /* only for demonstration, should be removed */
 }
+
+.left_box {
+  width: 20%;
+  background-color: white;
+  height: 100px; /* only for demonstration, should be removed */
+}
+
+
     
 .box {
     -moz-border-radius-topright:5px;
@@ -74,6 +82,16 @@ bottom: 0;
 right: 0;
 }
 
+.left_box{
+    float: left;
+    text-align: left;
+}
+
+label {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+}​
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
@@ -82,6 +100,8 @@ right: 0;
     height: auto;
   }
 }
+
+  
 
 
 
