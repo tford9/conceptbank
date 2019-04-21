@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../css/styles.css">
+<script type="text/javascript" src= "../jscript/tabs_color_script.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <title>CSS Template</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,44 +12,81 @@
     <h2><font color="white">CONCEPTBANK</font></h2>
 
 </div>
+ <div id="parent">   
 
+<div id="squareContainer">
+    
+    <div id="square0"; class="tab">&nbsp; 
+    <button class="tablinks" onclick="opentab(event, 'tab1')">robot1</button>
+  <button class="tablinks" onclick="opentab(event, 'tab2')">robot2</button>
+  <button class="tablinks" onclick="opentab(event, 'tab3')">robot3</button>
+
+        
+<div id="tab1" class="tabcontent">
+  <h3>robot1</h3>
+  <p>Document 1 on robots.</p>
+</div>
+
+<div id="tab2" class="tabcontent">
+  <h3>robot2</h3>
+  <p>Document 2 on machine learning.</p> 
+</div>
+
+<div id="tab3" class="tabcontent">
+  <h3>robot3</h3>
+  <p>Document 3 on security.</p>
+    
+</div>
+    </div>
+   
+</div>
+   
+       
+       
+</div>
 <div class="files">
     <h2 align="left"><font color="blue">File Location</font></h2>
     <div class="left_box">
         <div class="block">
-            <label>Title</label>
-            <input type="text" />
+            <label>Title:  </label>
+            <input type="text" placeholder="Required" required/>
         </div>
         
         
         <div class="block">
-            <label>Authors</label>
-            <input type="text" />
+            <label>Authors:  </label>
+            <input type="text" placeholder="Required" />
         </div>
         
         <div class="block">
-            <label>Institution</label>
-            <input type="text" />
+            <label>Institution:  </label>
+            <input type="text" placeholder="Required" />
         </div>
     
         <div class="block">
-            <label>Keywords</label>
-            <input type="text" />
+            <label>Keywords:  </label>
+            <input type="text" placeholder="Required" />
         </div>
 
         <div class="block">
-            <label>File Location</label>
-            <input type="text" />
-        </div>
-    
+            <label>File Location:  </label>
+            <input type="text" placeholder="Required" />
+        </div>    
 
     </div>
+
     <hr style="clear:both;">
 
   
     <div class="left_box">
-        <h2 align="left"><font color="blue">File Directory</font></h2>  
-    
+        <h2 align="left"><font color="blue">File Directory</font></h2> 
+        <p align="left"><font color="black">Choose A File</font></p>
+            <select name="cars">
+                <option value="f1">File 1</option>
+                <option value="f2">File 2</option>
+                <option value="f3">File 3</option>
+                <option value="f4">File 4</option>
+            </select>
 
     </div>
     
@@ -57,45 +96,70 @@
     <div class="left_box">
         <h2 align="left"><font color="blue">References</font></h2>
     
-
+        
     </div>
+ 
 
 </div>
+    
+
 </head>
 <body>
-<div class="rectangle">
-        
-    <p>Choose highlighting color:</p>
-    <input type="color" id="rightl" name="Cite Later"
-           value="#FF0000">
-    <label for="head">Cite Later</label>
-
-
-
-    <input type="color" id="Look Up Later" name="Look Up Later"
-            value="#008000">
-    <label for="body">Look Up Later</label>
-
     
+<script language="JavaScript">
+var colors = ["#FF0000", "#008000", "#FFFF00","#800080","#FFC0CB"];
+</script>
 
-    <input type="color" id="Interesting" name="Interesting"
-            value="#FFFF00">
-    <label for="body">Interesting</label>
+<form name="myForm" action="form.html" method="get">
 
-    
-
-    <input type="color" id="Need To Refute" name="Need To Refute"
-            value="#800080">
-    <label for="body">Need To Refute</label>
-
-
-    <input type="color" id="Reference" name="Reference"
-            value="#FFC0CB">
-    <label for="body">Reference</label>
+<h4>Select A Color:</h4>
+<div id="colorSelection">
+    <div style="background-color:#FF0000;" id="color0">&nbsp; </div>
+    <div style="background-color:#008000;" id="color1">&nbsp;</div>
+    <div style="background-color:#FFFF00;" id="color2">&nbsp;</div>
+    <div style="background-color:#800080;" id="color3">&nbsp;</div>
+    <div style="background-color:#FFC0CB;" id="color4">&nbsp;</div>
 </div>
 
-  
 
 
+<input type="hidden" name="square0" value="">
+<input type="hidden" name="square1" value="">
+<input type="hidden" name="square2" value="">
+<input type="hidden" name="square3" value="">
+
+
+
+</form>
+  <script>
+$('div#colorSelection').on('click', 'div', function(event){
+    $('div.selectedColor').removeClass('selectedColor');
+    $(this).addClass('selectedColor');
+})
+$('div#squareContainer').on('click', 'div', function(event){
+    var color = $('div.selectedColor').css('background-color');
+    var squareId = $(this).id;
+
+    $(this).css({"background-color":color});
+    $('input[name="'+squareId+'"]').val(color);
+
+});
+</script>
+
+<script>
+function opentab(evt, topic) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(topic).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>  
 </body>
 </html>
