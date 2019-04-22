@@ -1,116 +1,26 @@
-<style>
-* {
-  box-sizing: border-box;
+html, body, .grid-container { height: 100%; margin: 0; }
+
+.grid-container * { 
+ border: 1px solid #00bfff;
+ position: relative;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+.grid-container *:after { 
+ content:attr(class);
+ position: absolute;
+ top: 0;
+ left: 0;
 }
 
-/* Style the header */
-header {
-  background-color: #666;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "File-Location Paper-Tabs Paper-Tabs Document-Markups" "File-Directory Paper-Tabs Paper-Tabs Document-Markups" "References Paper-Tabs Paper-Tabs Highlight-Wheel";
 }
 
-
-/* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 30%;
-  height: 300px; /* only for demonstration, should be removed */
-  background: #ccc;
-  padding: 20px;
-}
-
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-article {
-  float: left;
-  padding: 20px;
-  width: 70%;
-  background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
-}
-.files{
-    
-    background-color: #00bfff;
-    width: 35%;
-
-}
-
-.left_box {
-  width: 10%;
-  background-color: white;
-  height: 200px; /* only for demonstration, should be removed */
-    
-}
-
-
-
-
-    
-.box {
-    -moz-border-radius-topright:5px;
-    -moz-border-radius-topleft:5px;
-    -webkit-border-top-right-radius:5px;
-    -webkit-border-top-left-radius:5px;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-    text-align: center;
-    background-color: #00bfff;
-    height: 30%;
-    padding: 25px;
-}
-
-/* Clear floats after the columns */
-section:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Style the footer */
-footer {
-  background-color: #777;
-  padding: 10px;
-  text-align: center;
-  color: white;
-}
-
-.rectangle{
-
-position: absolute;
-bottom: 0;
-right: 0;
-size: 10%;
-}
-
-.left_box{
-    float: left;
-    text-align: left;
-    height: auto;
-}
-
-label {
-  display: inline-block;
-  width: 140px;
-  text-align: right;
-}​
-
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
-  }
+div.selectedColor{
+    border:1px solid black;
 }
 
 /* Style the tab */
@@ -156,23 +66,29 @@ label {
   border-top: none;
 }
 
-
-div#colorSelection div{
-    width:100px;
-    height:30px;
-    position: static;
-    bottom: 0;
-    right: 0;
-    size: 10%;
-}
-div#squareContainer div{
-    border:1px solid black;
-    width:400px;
-    height:200px;
-}
-div.selectedColor{
-    border:1px solid black;
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
 }
 
+th, td {
+  text-align: left;
+  padding: 16px;
+}
 
-</style>
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+.File-Location { grid-area: File-Location; }
+
+.File-Directory { grid-area: File-Directory; }
+
+.References { grid-area: References; }
+
+.Document-Markups { grid-area: Document-Markups; }
+
+.Highlight-Wheel { grid-area: Highlight-Wheel; }
+
+.Paper-Tabs { grid-area: Paper-Tabs; }
