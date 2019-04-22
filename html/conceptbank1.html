@@ -101,16 +101,20 @@
 <h4>Select A Color:</h4>
 <div id="square1" class="square">
     </div>
+        <p>Look Up Later</p>
     <div id="square2" class="square">
     </div>
+        <p>Refute</p>
     <div id="square3" class="square">
     </div>
+        <p>Interesting</p>
     <div id="square4" class="square">
     </div>
+        <p>Comment</p>
     <div id="square5" class="square">
     </div>
 
-
+        <p>Clear</p>
 
 </form>
 
@@ -195,7 +199,7 @@ function sortByDate() {
 
     </script> 
     
-<script type="application/javascript">
+<script>
       
         $('#square1').click(function(){
              $('#main').off();
@@ -224,7 +228,14 @@ function sortByDate() {
           })
 
     </script>
+<script>
+$('#square1').contextmenu(function(e) {
+  alert("Right click");
+    e.stopPropagation();
+    return false;
     
+});
+</script>   
     
 </body>
 </html>
