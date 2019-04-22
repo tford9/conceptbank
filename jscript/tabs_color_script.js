@@ -1,8 +1,7 @@
-<script>
 $('div#colorSelection').on('click', 'div', function(event){
     $('div.selectedColor').removeClass('selectedColor');
     $(this).addClass('selectedColor');
-})
+});
 $('div#Paper-Tabs').on('click', 'div', function(event){
     var color = $('div.selectedColor').css('background-color');
     var squareId = $(this).id;
@@ -11,11 +10,7 @@ $('div#Paper-Tabs').on('click', 'div', function(event){
     $('input[name="'+squareId+'"]').val(color);
 
 });
-</script>
-    
 
-
-<script>
 function convertDate(d) {
   var p = d.split("/");
   return +(p[2]+p[1]+p[0]);
@@ -34,6 +29,3 @@ function sortByDate() {
     tbody.appendChild(v); // note that .appendChild() *moves* elements
   });
 }
-
-
-    </script>  
