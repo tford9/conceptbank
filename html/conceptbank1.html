@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../css/styles.css">
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jscript/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../jscript/jquery.marker.js"></script>
+</head>
 <body>
 <div class="grid-container">
   <div class="File-Location">
@@ -49,7 +51,12 @@
             </select>
 
     </div>
-  <div class="References"></div>
+  <div class="References">
+    
+         <h2 align="left"><font color="blue">References</font></h2> 
+
+    
+    </div>
     
   <div class="Document-Markups">
  
@@ -88,26 +95,20 @@
   
     
   <div class="Highlight-Wheel">
-    <script language="JavaScript">
-var colors = ["#FF0000", "#008000", "#FFFF00","#800080","#FFC0CB"];
-</script>
+
     <form name="myForm" action="form.html" method="get">
 
 <h4>Select A Color:</h4>
-<div id="colorSelection">
-    <div style="background-color:#FF0000;" id="color0">&nbsp; </div>
-    <div style="background-color:#008000;" id="color1">&nbsp;</div>
-    <div style="background-color:#FFFF00;" id="color2">&nbsp;</div>
-    <div style="background-color:#800080;" id="color3">&nbsp;</div>
-    <div style="background-color:#FFC0CB;" id="color4">&nbsp;</div>
-</div>
-
-
-
-<input type="hidden" name="square0" value="">
-<input type="hidden" name="square1" value="">
-<input type="hidden" name="square2" value="">
-<input type="hidden" name="square3" value="">
+<div id="square1" class="square">
+    </div>
+    <div id="square2" class="square">
+    </div>
+    <div id="square3" class="square">
+    </div>
+    <div id="square4" class="square">
+    </div>
+    <div id="square5" class="square">
+    </div>
 
 
 
@@ -140,6 +141,10 @@ var colors = ["#FF0000", "#008000", "#FFFF00","#800080","#FFC0CB"];
     
 </div>
       
+    <p id="main">
+        The proposed work presents a new novel approach to finding reliable food information on the web and provide consumers, particularly those that do not have the same resources as the broader population or may be disadvantaged, with food recommendations that are reliable, preferred by the users, as well as healthy. By employing expectation maximization techniques to find food reliability and utilizing prior food recommendation system methods to recommend healthier foods, we will demonstrate the benefits this will provide to consumers that are presented with the vast amount of conflicting nutritional information online.
+    </p>
+       
 </div>
     
 </div>
@@ -188,7 +193,39 @@ function sortByDate() {
 }
 
 
-    </script>  
+    </script> 
+    
+<script type="application/javascript">
+      
+        $('#square1').click(function(){
+             $('#main').off();
+             $("#main").marker({ color: 'red' });
+            
+          })
+         $('#square2').click(function(){
+              $('#main').off();
+             $("#main").marker({ color: 'green' });
+            
+          })
+         $('#square3').click(function(){
+              $('#main').off();
+             $("#main").marker({ color: 'yellow' });
+            
+          })
+         $('#square4').click(function(){
+              $('#main').off();
+             $("#main").marker({ color: 'darkviolet' });
+            
+          })
+         $('#square5').click(function(){
+              $('#main').off();
+             $("#main").marker({ color: 'white' });
+            
+          })
+
+    </script>
+    
+    
 </body>
 </html>
 
