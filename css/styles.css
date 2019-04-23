@@ -81,11 +81,21 @@ tr:nth-child(even) {
   background-color: #f2f2f2
 }
 
+#main2 {
+            display:none;
+        }
+
  .square {
-           content:attr(class); 
-            width:50px;
-            height: 50px;
+
+            width:35px;
+            height: 29px;
+     border: 1px solid black;
+     float:left;
+     margin: 6px;
+        position: relative;
             cursor:pointer;
+    
+        top:-2px;
         }
         #square1{
             background-color: red;
@@ -104,14 +114,77 @@ tr:nth-child(even) {
             border: 1px solid gray;
         }
 
-.File-Location { grid-area: File-Location; }
 
-.File-Directory { grid-area: File-Directory; }
+            
+            
+    
+  
+         
 
-.References { grid-area: References; }
+.tall {
+            width:20px;
+            height:30px;
+            cursor:pointer;
+            float: right;
+            border: 1px solid black;
+            position: relative;
+            top:-45px;
+            left:-55px;
+        }
 
-.Document-Markups { grid-area: Document-Markups; }
+.delet {
+            position: relative;
+            top: -15px;
+            left: 30px;
+            font-size: 25px;
+            font-weight: 600;
 
-.Highlight-Wheel { grid-area: Highlight-Wheel; }
+        }
+        .delet:hover{
+            color: red;
+        }
+        #tabs{
+            padding:40px;
+        }
+        #tab-2 {
+            display:none;
+        }
+        
+titles{
+    
+            background-color: gray;
+        }
 
-.Paper-Tabs { grid-area: Paper-Tabs; }
+button {
+            padding:14px 40px;
+            border-radius: 10px 10px 0 0;
+            margin-top: 16px;
+            border:none;
+            background-color: #969696;
+            font-size : 20px;
+        }
+        button:hover{
+            background-color: #969696;
+        }
+        button:focus {
+            background-color: #6997e0;
+        }
+
+
+.File-Location { grid-area: File-Location; background-color: #7eb1e2; }
+
+.File-Directory { grid-area: File-Directory; background-color: #7eb1e2; }
+
+.References { grid-area: References; background-color: #7eb1e2; }
+
+.Document-Markups { grid-area: Document-Markups; background-color: #7eb1e2;}
+
+.Highlight-Wheel { grid-area: Highlight-Wheel;
+      background-color: #7eb1e2;     
+}
+
+
+.Paper-Tabs { grid-area: Paper-Tabs; 
+
+
+        }
