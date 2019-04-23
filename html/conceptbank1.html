@@ -2,47 +2,48 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../css/styles.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="../jscript/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../jscript/jquery.marker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 <div class="grid-container">
   <div class="File-Location">
-    <h2 align="left"><font color="blue">File Location</font></h2>
+     
+    <h2 align="left"><font color="blue">File Description</font></h2>
     
-        <div class="block">
-            <label>Title:  </label>
-            <input type="text" placeholder="Required" required/>
-        </div>
-        
-        
-        <div class="block">
-            <label>Authors:  </label>
-            <input type="text" placeholder="Required" />
-        </div>
-        
-        <div class="block">
-            <label>Institution:  </label>
-            <input type="text" placeholder="Required" />
-        </div>
-    
-        <div class="block">
-            <label>Keywords:  </label>
-            <input type="text" placeholder="Required" />
-        </div>
 
-        <div class="block">
+            <label>Title:  </label>
+            <input id = "in1" style="white-space:pre" type="text" placeholder="Avengers Endgame" required/>
+<br>
+        
+        
+            <label>Authors:  </label>
+            <input id="in2" type="text" placeholder="Joseph Russo, Anthony Russo" />
+<br>       
+    
+            <label>Institution:  </label>
+            <input id="in3" placeholder="Marvel" />
+<br>   
+            <label>Keywords:  </label>
+            <input id="in4" placeholder="Disney, Thanos" />
+<br>
             <label>File Location:  </label>
-            <input type="text" placeholder="Required" />
-        </div>  
+            <input id="in5" placeholder="user/russo/movie" />
+
+      
     </div>
 
 
+    
   <div class="File-Directory">
     
      <h2 align="left"><font color="blue">File Directory</font></h2> 
-        <p align="left"><font color="black">Choose A File</font></p>
+        <p align="left"><font color="black">Add A File</font></p>
             <select name="cars">
                 <option value="f1">File 1</option>
                 <option value="f2">File 2</option>
@@ -50,11 +51,30 @@
                 <option value="f4">File 4</option>
             </select>
 
+     <i class="fas fa-plus fa-2x" style="float: left; color: white;margin: 10px; size: 30px; cursor:pointer;" id="add"></i>
+
+     <i class="fas fa-plus fa-2x" style="float: left; color: white;margin: 10px;cursor:pointer;display: none" id="add2"></i>
     </div>
-  <div class="References">
+  <div class="References">&nbsp;
     
          <h2 align="left"><font color="blue">References</font></h2> 
 
+        <div id = "ref1">
+                    <p></p> 
+
+                </div>
+      
+        <div id = "ref2">
+                    <p></p> 
+                </div>
+      
+       <div id = "ref3">
+                    <p></p> 
+                </div>
+      
+       <div id = "ref4">
+                    <p></p> 
+                </div>
     
     </div>
     
@@ -102,7 +122,7 @@
 <div id="square1" class="square">
     </div>
         <p>Look Up Later</p>
-    <div id="square2" class="square">
+    <div id="square2" class="square" >
     </div>
         <p>Refute</p>
     <div id="square3" class="square">
@@ -123,38 +143,234 @@
     </div>
     
     
-  <div class="Paper-Tabs">&nbsp; 
-<button class="tablinks" onclick="opentab(event, 'tab1')">robot1</button>
-  <button class="tablinks" onclick="opentab(event, 'tab2')">robot2</button>
-  <button class="tablinks" onclick="opentab(event, 'tab3')">robot3</button>
+  <div class="Paper-Tabs">&nbsp;  
 
-        
-<div id="tab1" class="tabcontent">
-  <h3>robot1</h3>
-  <p>Document 1 on robots.</p>
-</div>
+            <button id='buttonb1' ><span id="button1">paper1.pdf</span><span class="delet" id="delet1">x</span></button>
+            <button id='buttonb2'><span id="button2">paper2.pdf</span><span class="delet" id="delet2">x</span></button>
+            <button id='buttonb3' style="display: none"><span id="button3">paper3.pdf</span><span class="delet" id="delet3">x</span></button>
+            <button id='buttonb4' style="display: none"><span id="button4">paper4.pdf</span><span class="delet" id="delet4">x</span></button> 
 
-<div id="tab2" class="tabcontent">
-  <h3>robot2</h3>
-  <p>Document 2 on machine learning.</p> 
-</div>
 
-<div id="tab3" class="tabcontent">
-  <h3>robot3</h3>
-  <p>Document 3 on security.</p>
     
-</div>
+    <div id="tab-1">
+            News coverage of security and privacy (S&P) events is
+            pervasive and may affect the salience of S&P threats to the
+            public. To better understand this coverage and its effects,
+            we asked: What types of S&P news come into people’s
+            awareness? How do people hear about and share this news?
+            Over two years, we recruited 1999 participants to fill out a
+            survey on emergent S&P news events. We identified four
+            types of S&P news: financial data breaches, corporate
+            personal data breaches, high sensitivity systems breaches,
+            and politicized / activist cybersecurity. These event types
+            strongly correlated with how people shared S&P news—
+            e.g., financial data breaches were shared most (42%), while
+            politicized / activist cybersecurity events were shared least
+            (21%). Furthermore, participants’ age, gender and security
+            behavioral intention strongly correlated with how they
+            heard about and shared S&P news—e.g., males more often
+            felt a personal responsibility to share, and older people were
+            less likely to hear about S&P news through conversation
+    </div>
       
-    <p id="main">
-        The proposed work presents a new novel approach to finding reliable food information on the web and provide consumers, particularly those that do not have the same resources as the broader population or may be disadvantaged, with food recommendations that are reliable, preferred by the users, as well as healthy. By employing expectation maximization techniques to find food reliability and utilizing prior food recommendation system methods to recommend healthier foods, we will demonstrate the benefits this will provide to consumers that are presented with the vast amount of conflicting nutritional information online.
-    </p>
+    
+    <div id="tab-2">
+        Research suggests that parental engagement through Joint
+Media Engagement (JME) is an important factor in children’s learning for coding and programming. Unfortunately, parents with limited technology background may have
+difficulty supporting their children’s access to programming. English-language learning (ELL) families from marginalized communities face particular challenges in understanding and supporting programming, as code is primarily
+authored using English text. We present BlockStudio, a
+programming tool for empowering ELL families to jointly
+engage in introductory coding, using an environment embodying two design principles, text-free and visually concrete. We share a case study involving three community
+centers serving immigrant and refugee populations. Our
+findings show ELL families can jointly engage in programming without text, via co-creation and flexible roles,
+and can create a range of artifacts, indicating understanding
+of aspects of programming within this environment. We
+conclude with implications for coding together in ELL families and design ideas for text-free programming research.
+    </div>
+      
+      
+            <div id="tab-3" style="display: none">
+                <p>
+                  How can we use interactive displays in museums to help
+visitors appreciate authentic objects and artifacts that they
+can’t otherwise touch or manipulate? This paper shares
+results from a design-based research study on the use of
+interactive displays to help visitors learn about artifacts in
+an exhibit on the history and culture of China. To explore
+the potential afforded by these displays, we unobtrusively
+video recorded 834 museum visitor groups who stopped in
+front of one collection of objects. Drawing on cognitive
+models of curiosity, we tested three redesigns of this
+display, each focusing on a different strategy to spark
+visitor curiosity, interest, and engagement. To understand
+the relative effectiveness of these designs, we analyzed
+visitor interaction and conversation. Our results uncovered
+significant differences across the conditions suggesting
+implications for the use of such technology in museums.
+
+                </p>
+            </div>
+                 <div id="tab-4" style="display: none">
+                <p>
+                    Learning-based gaze estimation has significant potential to enable attentive user interfaces and gaze-based interaction on the
+billions of camera-equipped handheld devices and ambient displays. While training accurate person- and device-independent
+gaze estimators remains challenging, person-specific training
+is feasible but requires tedious data collection for each target device. To address these limitations, we present the first
+method to train person-specific gaze estimators across multiple devices. At the core of our method is a single convolutional neural network with shared feature extraction layers and
+device-specific branches that we train from face images and
+corresponding on-screen gaze locations. Detailed evaluations
+on a new dataset of interactions with five common devices (mobile phone, tablet, laptop, desktop computer, smart TV) and
+three common applications (mobile game, text editing, media
+center) demonstrate the significant potential of cross-device
+training. We further explore training with gaze locations derived from natural interactions, such as mouse or touch input.
+                </p>
+            </div>
        
 </div>
     
 </div>
+   
     
+<script>
     
+        $('#add0').click(function(){
+            $('#buttonb2').show();
+            $('#tab-3').hide();
+            $('#tab-1').hide();
+            $('#tab-2').show();
+            $('#add2').show();
+            $('#add').show();
+        })    
     
+        $('#add').click(function(){
+            $('#buttonb3').show();
+            $('#tab-3').show();
+            $('#tab-1').hide();
+            $('#tab-2').hide();
+            $('#add2').show();
+            $('#add').hide();
+        })
+        
+        $('#add2').click(function(){
+            $('#buttonb4').show();
+            $('#tab-4').show();
+            $('#tab-1').hide();
+            $('#tab-2').hide();
+            $('#tab-3').hide();
+        })
+        
+        $('#delet1').click(function(){
+            $('#button1').hide();
+            $('#tab-1').hide();
+            $('#buttonb1').hide();
+            $("#in1").val("Avengers Endgame");
+            $("#in2").val("Joseph Russo, Anthony Russo");
+            $("#in3").val("Marvel");
+            $("#in4").val("Disney, Thanos");
+            $("#in5").val("user/russo/movie");
+            $('#ref1').hide();
+            
+        })
+        $('#delet2').click(function(){
+            $('#button2').hide();
+            $('#tab-2').hide();
+            $('#buttonb2').hide();
+            $("#in1").val("Avengers Endgame");
+            $("#in2").val("Joseph Russo, Anthony Russo");
+            $("#in3").val("Marvel");
+            $("#in4").val("Disney, Thanos");
+            $("#in5").val("user/russo/movie");
+            $('#ref2').hide();
+        })
+        $('#delet3').click(function(){
+            $('#button3').hide();
+            $('#tab-3').hide();
+            $('#buttonb3').hide();
+            $("#in1").val("Avengers Endgame");
+            $("#in2").val("Joseph Russo, Anthony Russo");
+            $("#in3").val("Marvel");
+            $("#in4").val("Disney, Thanos");
+            $("#in5").val("user/russo/movie");
+            $('#ref3').hide();
+        })
+        $('#delet4').click(function(){
+            $('#button4').hide();
+            $('#tab-4').hide();
+            $('#buttonb4').hide();
+            $("#in1").val("Avengers Endgame");
+            $("#in2").val("Joseph Russo, Anthony Russo");
+            $("#in3").val("Marvel");
+            $("#in4").val("Disney, Thanos");
+            $("#in5").val("user/russo/movie");
+            $('#ref4').hide();
+        })
+
+        
+        
+        
+    
+        $('#button1').click(function(){
+            $('#tab-1').show();
+            $('#tab-2').hide();
+            $('#tab-3').hide();
+            $("#in1").val("Breaking! A Typology of Security and Privacy News and How It’s Shared");
+            $("#in2").val("Sauvik Das, Joanne Lo");
+            $("#in3").val("Georgia Institute of Technology");
+            $("#in4").val("usable privacy, news media");
+            $("#in5").val("user/tford5/chi");
+            $("#ref1").text("Yves Rosseel. 2012. lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software 48, 2: 1–36. ").show();
+            $("#ref2'").hide();
+            
+           
+            
+        })
+    
+         $('#button2').click(function(){
+            $('#tab-2').show();
+            $('#tab-1').hide();
+            $('#tab-3').hide();
+            $("#in1").val("Digital Exhibit Labels in Museums: Promoting Visitor Engagement with Cultural Artifacts");
+            $("#in2").val("Jessica Roberts, Amartya Banerjee");
+            $("#in3").val("Northwestern, Carnegie Mellon");
+            $("#in4").val("Museums, learning, interactive, displays");
+            $("#in5").val("user/jmarsha/chi");
+            $('#ref2').text("Nina Simon (2010). The participatory museum.Museum 2.0.").show();
+            $('#ref1').hide();
+             
+
+        })
+        
+        $('#button3').click(function(){
+            $('#tab-3').show();
+            $('#tab-1').hide();
+            $('#tab-2').hide();
+            $("#in1").val("Empowering Families Facing English Literacy Challenges to Jointly Engage in Computer Programming");
+            $("#in2").val("Rahul Banerjee, Leanne Liu");
+            $("#in3").val("University of Washington");
+            $("#in4").val("coding, programming, media engagement");
+            $("#in5").val("user/abrar/chi");
+            $('#ref3').text("Robert Yin. 2013. Validity and generalizations in future case study evaluations. Evaluation, 19(3), 321-332 Juha Sorva. 2012. Visual program simulation in introductory programming education. Doctoral Dissertation. Aalto University, Espoo, Finland").show(); 
+            $('#ref2').hide();
+            
+        })
+        $('#button4').click(function(){
+            $('#tab-4').show();
+            $('#tab-3').hide();
+            $('#tab-1').hide();
+            $('#tab-2').hide();
+            $("#in1").val("Training Person-Specific Gaze Estimators from User Interactions with Multiple Devices");
+            $("#in2").val("Xucong Zhang, Michael Xuelin Huang");
+            $("#in3").val("Max Planck Institute for Informatics, Saarland Informatics Campus");
+            $("#in4").val("multi-devices, appearance-based gaze estimates");
+            $("#in5").val("user/akim/chi");
+            $('#ref4').text("Soonhwa Seok and Boaventura DaCosta. Predicting video game behavior: An investigation of the relationship between personality and mobile game play. Games and Culture, 10(5):481–501, 2015.").show();
+            $('#ref3').hide();
+        
+            
+        })
+           
+  </script>  
+   
     
     
     
@@ -202,39 +418,113 @@ function sortByDate() {
 <script>
       
         $('#square1').click(function(){
-             $('#main').off();
-             $("#main").marker({ color: 'red' });
+             $('#tab-1').off();
+             $("#tab-1").marker({ color: 'red' });
             
           })
          $('#square2').click(function(){
-              $('#main').off();
-             $("#main").marker({ color: 'green' });
+              $('#tab-1').off();
+             $("#tab-1").marker({ color: 'green' });
             
           })
          $('#square3').click(function(){
-              $('#main').off();
-             $("#main").marker({ color: 'yellow' });
+              $('#tab-1').off();
+             $("#tab-1").marker({ color: 'yellow' });
             
           })
          $('#square4').click(function(){
-              $('#main').off();
-             $("#main").marker({ color: 'darkviolet' });
+              $('#tab-1').off();
+             $("#tab-1").marker({ color: 'darkviolet' });
             
           })
          $('#square5').click(function(){
-              $('#main').off();
-             $("#main").marker({ color: 'white' });
+              $('#tab-1').off();
+             $("#tab-1").marker({ color: 'white' });
+            
+          })
+    
+    
+               $('#square1').click(function(){
+             $('#tab-2').off();
+             $("#tab-2").marker({ color: 'red' });
+            
+          })
+         $('#square2').click(function(){
+              $('#tab-2').off();
+             $("#tab-2").marker({ color: 'green' });
+            
+          })
+         $('#square3').click(function(){
+              $('#tab-2').off();
+             $("#tab-2").marker({ color: 'yellow' });
+            
+          })
+         $('#square4').click(function(){
+              $('#tab-2').off();
+             $("#tab-2").marker({ color: 'darkviolet' });
+            
+          })
+         $('#square5').click(function(){
+              $('#tab-2').off();
+             $("#tab-2").marker({ color: 'white' });
+            
+          })
+    
+           $('#square1').click(function(){
+             $('#tab-3').off();
+             $("#tab-3").marker({ color: 'red' });
+            
+          })
+         $('#square2').click(function(){
+              $('#tab-3').off();
+             $("#tab-3").marker({ color: 'green' });
+            
+          })
+         $('#square3').click(function(){
+              $('#tab-3').off();
+             $("#tab-3").marker({ color: 'yellow' });
+            
+          })
+         $('#square4').click(function(){
+              $('#tab-3').off();
+             $("#tab-3").marker({ color: 'darkviolet' });
+            
+          })
+         $('#square5').click(function(){
+              $('#tab-3').off();
+             $("#tab-3").marker({ color: 'white' });
+            
+          })
+    
+           $('#square1').click(function(){
+             $('#tab-4').off();
+             $("#tab-4").marker({ color: 'red' });
+            
+          })
+         $('#square2').click(function(){
+              $('#tab-4').off();
+             $("#tab-4").marker({ color: 'green' });
+            
+          })
+         $('#square3').click(function(){
+              $('#tab-4').off();
+             $("#tab-4").marker({ color: 'yellow' });
+            
+          })
+         $('#square4').click(function(){
+              $('#tab-4').off();
+             $("#tab-4").marker({ color: 'darkviolet' });
+            
+          })
+         $('#square5').click(function(){
+              $('#tab-4').off();
+             $("#tab-4").marker({ color: 'white' });
             
           })
 
     </script>
 <script>
-$('#square1').contextmenu(function(e) {
-  alert("Right click");
-    e.stopPropagation();
-    return false;
-    
-});
+
 </script>   
     
 </body>
