@@ -1,17 +1,19 @@
-var svgContainer = d3.select("body").append("svg")
-    .attr("width", 1200)
-    .attr("height", 900);
+var svgContainer = d3.select("#sort_space").append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 360 480");
 
-function cardFactory(data = [1, 2, 3], x = 300, y = 0, textSelection = "Sample Text") {
+function cardFactory(data = [0,1,2], x = 0, y = 0, textSelection = "Sample Text") {
     /* Should Return a card object that can then be appended to
     *  the svg at a certain point */
     var date = new Date();
+    // alert("cardFactory")
 
 
 // Card Shape variables
     var borderColor = 'black';
     var borderWidth = 10;
-    var cardDims = [360, 120]
+    var cardDims = [350, 120]
 
     // create card element
     var card = svgContainer.selectAll("g")
@@ -19,7 +21,7 @@ function cardFactory(data = [1, 2, 3], x = 300, y = 0, textSelection = "Sample T
         .enter().append("g")
         .attr('pointer-events', 'all')
         .attr("transform", function (d, i) {
-            return "translate(" + 0 + "," + d * 125 + ")";
+            return "translate(" + 5 + "," + (d * 125 + 50) + ")";
         });
     // add border to card
     card.append('rect')
@@ -46,7 +48,7 @@ function cardFactory(data = [1, 2, 3], x = 300, y = 0, textSelection = "Sample T
     // Add TimeStamp to card
     card.append("text")
         .attr("y", y + 110)
-        .attr("x", x + 245)
+        .attr("x", x + 225)
         .attr("dy", ".35em")
         .text(function () {
             return date.toDateString();
