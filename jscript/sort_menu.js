@@ -3,10 +3,16 @@ var svgContainer = d3.select("#sort_space").append("svg")
     .attr("height", "100%")
     .attr("viewBox", "0 0 360 480");
 
-function cardFactory(data = [['red', 'sample text1', new Date(2014, 1, 1)], ['blue', 'sample text2', new Date(2013, 1, 1)]], x = 0, y = 0) {
+var div = d3.select("#sort_space").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+var local_data = [['red', 'sample text1', new Date(2014, 1, 1)], ['blue', 'sample text2', new Date(2013, 1, 1)]];
+
+function cardFactory(data = annotation_array, x = 0, y = 0) {
     /* Should Return a card object that can then be appended to
     *  the svg at a certain point */
-    // var date = new Date();
+
     // alert("cardFactory")
 
     function date_sort(a, b) {
@@ -44,23 +50,22 @@ function cardFactory(data = [['red', 'sample text1', new Date(2014, 1, 1)], ['bl
         .on("mouseout", handleMouseOut);
 
     // Add currently selected text to card
+
     card.append("text")
     // .data(data)
-        .attr("y", y + 55)
-        .attr("x", x + 120)
-        .attr("dy", ".35em")
-        .text(function (d, i) {
-            // return document.getSelection().toString();
-            return d[1];
-        });
+        .attr("y", y + 50)
+        .attr("x", x + 30)
+        .call(wrap, cardDims[0] - 50)
 
     // Add TimeStamp to card
     card.append("text")
         .attr("y", y + 110)
         .attr("x", x + 225)
         .attr("dy", ".35em")
+        .attr("fontSize", "small")
         .text(function (d) {
-            return d[2].toDateString();
+            var date_str = d[2].getHours() + ":" + d[2].getMinutes() + "  " + d[2].getMonth() + "/" + d[2].getDay() + "/" + d[2].getFullYear();
+            return d[2].toTimeString();
         });
 
     // Add Selected color rectangle to card
@@ -83,6 +88,8 @@ function handleMouseOver(d, i) {  // Add interactivity
     d3.select(this).attrs({
         fill: "gainsboro",
     });
+    var formatTime = d3.time.format("%e %B");
+
 
     // Specify where to put label of text
     svgContainer.append("text").attrs({
@@ -93,9 +100,14 @@ function handleMouseOver(d, i) {  // Add interactivity
         y: function () {
             return 15;
         }
-    })
-    // .text(function () {
-    //     return document.getSelection().toString();});
+    });
+    div.transition()
+        .duration(200)
+        .style("opacity", .9);
+    div.html(formatTime(d[2]) + "<br/>")
+        .style("left", (0) + "px")
+        .style("top", (i*125) + "px");
+
 }
 
 function handleMouseOut(d, i) {
@@ -106,6 +118,37 @@ function handleMouseOut(d, i) {
 
     // Select text by id and then remove
     d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+
+    div.transition()
+        .duration(500)
+        .style("opacity", 0);
 }
 
-cardFactory()
+function wrap(text, width) {
+    text.each(function() {
+        var text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            y = text.attr("y"),
+            dy = parseFloat(text.attr("dy")),
+            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+            }
+        }
+    });
+}
+
+function type(d) {
+    d.value = +d.value;
+    return d;
+}

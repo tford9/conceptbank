@@ -1,5 +1,18 @@
 html, body, .grid-container { height: 100%; margin: 0; }
 
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 .grid-container * { 
 
 
@@ -207,7 +220,6 @@ label{
    
      background-color: white;
             border-radius: 55px;
-            
             border: 1px solid black;}
 
 .Highlight-Wheel { grid-area: Highlight-Wheel;
