@@ -1,12 +1,14 @@
 html, body, .grid-container { height: 100%; margin: 0; }
 
 .grid-container * { 
- border: 1px solid #00bfff;
+
+
  position: relative;
+    
 }
 
 .grid-container *:after { 
- 
+ background-color: #7eb1e2;
  position: absolute;
  top: 0;
  left: 0;
@@ -14,6 +16,7 @@ html, body, .grid-container { height: 100%; margin: 0; }
 
 .grid-container {
   display: grid;
+         background-color: #7eb1e2;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: "File-Location Paper-Tabs Paper-Tabs Document-Markups" "File-Directory Paper-Tabs Paper-Tabs Document-Markups" "References Paper-Tabs Paper-Tabs Highlight-Wheel";
@@ -169,22 +172,55 @@ button {
         button:focus {
             background-color: #6997e0;
         }
+input {
+  display: inline-block;
+  float: left;
+}
 
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+}
 
-.File-Location { grid-area: File-Location; background-color: #7eb1e2; }
+.File-Location { grid-area: File-Location; background-color: #7eb1e2;
+ background-color: white;
+            border-radius: 55px;
+            padding: 5px;
+            border: 1px solid black;}
 
-.File-Directory { grid-area: File-Directory; background-color: #7eb1e2; }
+.File-Directory { grid-area: File-Directory; background-color: #7eb1e2; 
+ background-color: white;
+            border-radius: 55px;
+            padding: 5px;
+            border: 1px solid black;}
 
-.References { grid-area: References; background-color: #7eb1e2; }
+.References { grid-area: References; background-color: #7eb1e2; 
+ background-color: white;
+            border-radius: 55px;
+            padding: 5px;
+            border: 1px solid black;}
 
-.Document-Markups { grid-area: Document-Markups; background-color: #7eb1e2;}
+.Document-Markups { grid-area: Document-Markups; 
+   
+     background-color: white;
+            border-radius: 55px;
+            
+            border: 1px solid black;}
 
 .Highlight-Wheel { grid-area: Highlight-Wheel;
-      background-color: #7eb1e2;     
+ 
+       
+     background-color: white;
+            border-radius: 30px;
+            
+            border: 1px solid black;
 }
 
 
 .Paper-Tabs { grid-area: Paper-Tabs; 
-
+background-color: white;
 
         }
