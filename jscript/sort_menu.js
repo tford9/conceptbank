@@ -2,18 +2,12 @@ var svgContainer = d3.select("body").append("svg")
     .attr("width", 1200)
     .attr("height", 900);
 
-// var circle = svgContainer.append("circle")
-//     .attr("cx", 30)
-//     .attr("cy", 30)
-//     .attr("r", 20);
-
-
-// var data = ["TEXT SAMPLE"], r = 15;
-
-function cardFactory(data = [1], x = 80, y = 80) {
+function cardFactory(data = [1, 2], x = 300, y = 0, textSelection = "Sample Text") {
     /* Should Return a card object that can then be appended to
     *  the svg at a certain point */
     var date = new Date();
+
+
 // Card Shape variables
     var borderColor = 'black';
     var borderWidth = 10;
@@ -22,8 +16,9 @@ function cardFactory(data = [1], x = 80, y = 80) {
     var rect = svgContainer.selectAll("g")
         .data(data)
         .enter().append("g")
+        .attr('pointer-events', 'all')
         .attr("transform", function (d, i) {
-            return "translate(100,100)";
+            return "translate(" + d + "," + d * 125 + ")";
         });
 
     rect.append('rect')
@@ -34,48 +29,58 @@ function cardFactory(data = [1], x = 80, y = 80) {
         .attr('fill', 'none')
         .attr('stroke', borderColor)
         .attr('border', borderWidth)
-        .on("mouseover", function () {
-            d3.select(this.nextSibling)
-                .attr("opacity", "1")
-        })
-        .on("mouseout", function () {
-            d3.select(this.nextSibling)
-                .attr("opacity", "0")
-        });
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut);
+
     // Add TimeStamp to rectangle
     rect.append("text")
         .attr("y", y + 110)
-        .attr("x", x + 240)
+        .attr("x", x + 245)
         .attr("dy", ".35em")
-        .text(function (d) {
+        .text(function () {
             return date.toDateString();
         });
-    // Add Selected Text
-    // rect.append("text")
-    //     .attr("y", y + 110)
-    //     .attr("x", x + 240)
-    //     .attr("dy", ".35em")
-    //     .text(function (d) {
-    //         return date.toDateString();
-    //     });
+
     // Add Selected color rectangle
-    var colorRect = svgContainer.append('rect')
-        .attr('x', x+105)
-        .attr('y', y+105)
+    rect.append('rect')
+        .attr('x', x + 5)
+        .attr('y', y + 5)
         .attr('width', 20)
         .attr('height', 20)
         .attr('fill', 'red')
         .attr('stroke', borderColor)
         .attr('border', borderWidth);
-    // .transition()
-    // .duration(5000)
-    // .attr('x', 460 )
-    // .attr('y', 150 )
-    // .attr('width', 40 )
-    // .attr('height', 40 )
-    // .attr('fill', 'blue');
+}
 
-    // return newCard;
+function handleMouseOver(d, i) {  // Add interactivity
+
+    // Use D3 to select element, change color and size
+    d3.select(this).attrs({
+        fill: "gainsboro",
+    });
+
+    // Specify where to put label of text
+    svgContainer.append("text").attrs({
+        id: "t" + d.x + "-" + d.y + "-" + i,
+        x: function () {
+            return 30;
+        },
+        y: function () {
+            return 15;
+        }
+    })
+        .text(function () {
+            return document.getSelection().toString();});
+}
+
+function handleMouseOut(d, i) {
+    // Use D3 to select element, change color back to normal
+    d3.select(this).attrs({
+        fill: "none",
+    });
+
+    // Select text by id and then remove
+    d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
 }
 
 cardFactory()
