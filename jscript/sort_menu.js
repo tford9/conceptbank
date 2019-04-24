@@ -2,7 +2,7 @@ var svgContainer = d3.select("body").append("svg")
     .attr("width", 1200)
     .attr("height", 900);
 
-function cardFactory(data = [1, 2], x = 300, y = 0, textSelection = "Sample Text") {
+function cardFactory(data = [1, 2, 3], x = 300, y = 0, textSelection = "Sample Text") {
     /* Should Return a card object that can then be appended to
     *  the svg at a certain point */
     var date = new Date();
@@ -13,15 +13,16 @@ function cardFactory(data = [1, 2], x = 300, y = 0, textSelection = "Sample Text
     var borderWidth = 10;
     var cardDims = [360, 120]
 
-    var rect = svgContainer.selectAll("g")
+    // create card element
+    var card = svgContainer.selectAll("g")
         .data(data)
         .enter().append("g")
         .attr('pointer-events', 'all')
         .attr("transform", function (d, i) {
-            return "translate(" + d + "," + d * 125 + ")";
+            return "translate(" + 0 + "," + d * 125 + ")";
         });
-
-    rect.append('rect')
+    // add border to card
+    card.append('rect')
         .attr('x', x)
         .attr('y', y)
         .attr('width', cardDims[0])
@@ -32,8 +33,18 @@ function cardFactory(data = [1, 2], x = 300, y = 0, textSelection = "Sample Text
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut);
 
-    // Add TimeStamp to rectangle
-    rect.append("text")
+    // Add currently selected text to card
+    card.append("text")
+        .attr("y", y + 55)
+        .attr("x", x + 120)
+        .attr("dy", ".35em")
+        .text(function (d) {
+            // return document.getSelection().toString();
+            return "test text" + d;
+        });
+
+    // Add TimeStamp to card
+    card.append("text")
         .attr("y", y + 110)
         .attr("x", x + 245)
         .attr("dy", ".35em")
@@ -41,8 +52,8 @@ function cardFactory(data = [1, 2], x = 300, y = 0, textSelection = "Sample Text
             return date.toDateString();
         });
 
-    // Add Selected color rectangle
-    rect.append('rect')
+    // Add Selected color rectangle to card
+    card.append('rect')
         .attr('x', x + 5)
         .attr('y', y + 5)
         .attr('width', 20)
@@ -69,8 +80,8 @@ function handleMouseOver(d, i) {  // Add interactivity
             return 15;
         }
     })
-        .text(function () {
-            return document.getSelection().toString();});
+        // .text(function () {
+        //     return document.getSelection().toString();});
 }
 
 function handleMouseOut(d, i) {
