@@ -1,36 +1,58 @@
 var svgContainer = d3.select("#sort_space").append("svg")
     .attr("width", "100%")
     .attr("height", "95%")
-    // .attr("viewBox", "0 0 360 ");
+// .attr("viewBox", "0 0 360 ");
 
 var div = d3.select("#sort_space").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
 // var local_data = [['red', 'sample text1', new Date(2014, 1, 1)], ['blue', 'sample text2', new Date(2013, 1, 1)]];
+let global_ascending = 0;
+
+function sort_click() {
+    if (global_ascending === 2) {
+        global_ascending = 0;
+    } else {
+        global_ascending = global_ascending + 1;
+    }
+    // alert("sort_click");
+    cardFactory();
+}
+
+function asc_date_sort(a, b) {
+    return a[2] - b[2];
+}
+function desc_date_sort(a, b) {
+    return b[2] - a[2];
+}
+function no_sort(a, b) {
+    return 0;
+}
 
 function cardFactory(data = annotation_array, x = 0, y = 0) {
     /* Should Return a card object that can then be appended to
     *  the svg at a certain point */
 
-    svgContainer.attr('height', (annotation_array.length*125 + 50));
+    svgContainer.attr('height', (data.length * 125 + 50));
 
-    function date_sort(a, b) {
-        if (a[3] < b[3]) {
-            return 1;
-        } else {
-            return -1;
-        }
+    let current_sort;
+    if (global_ascending === 0) {
+        current_sort = no_sort;
+    } else if (global_ascending === 1) {
+        current_sort = asc_date_sort;
+    } else {
+        current_sort = desc_date_sort;
     }
 
 // Card Shape variables
     var borderColor = 'black';
     var borderWidth = 10;
-    var cardDims = [500, 120]
+    var cardDims = [500, 120];
 
     // create card element
     var card = svgContainer.selectAll("g")
-        .data(data.sort(date_sort))
+        .data(data.sort(current_sort))
         .enter().append("g")
         .attr('pointer-events', 'all')
         .attr("transform", function (d, i) {
@@ -49,7 +71,6 @@ function cardFactory(data = annotation_array, x = 0, y = 0) {
         .on("mouseout", handleMouseOut);
 
     // Add currently selected text to card
-
     card.append("text")
     // .data(data)
         .attr("y", y + 50)
@@ -62,7 +83,7 @@ function cardFactory(data = annotation_array, x = 0, y = 0) {
                 return d[1].toString();
             }
         })
-        .call(wrap, 480);
+        .call(wrap, 450);
 
     // Add TimeStamp to card
     card.append("text")
@@ -87,6 +108,20 @@ function cardFactory(data = annotation_array, x = 0, y = 0) {
         })
         .attr('stroke', borderColor)
         .attr('border', borderWidth);
+
+    card.append("marker")
+        .attrs({
+            "id": "arrow",
+            "viewBox": "0 -5 10 10",
+            "refX": 50,
+            "refY": 50,
+            "markerWidth": 10,
+            "markerHeight": 100,
+            "orient": "auto"
+        }).append("path")
+        .attr("d", "M0,-5L10,0L0,5")
+        .attr("class", "arrowHead");
+    cardFactory();
 }
 
 function handleMouseOver(d, i) {  // Add interactivity
@@ -154,3 +189,5 @@ function wrap(text, width) {
         }
     });
 }
+
+cardFactory();
