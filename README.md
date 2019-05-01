@@ -7,7 +7,9 @@ Python 2.x
 Python 3.x
 > python3 -m http.server 8080
 
-Be sure to run the command from the root directory of the ConceptBank repository.
+Be sure to run the command from the root directory of the ConceptBank repository. 
+
+html/concept.html is the main file.
 
 
 Currently the code for the interface supports browsers using web protocols from IE versions greater than 9.0, and current versions of all other current browsers. 
